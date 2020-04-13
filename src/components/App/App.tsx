@@ -86,7 +86,7 @@ export const App: FunctionComponent = () => {
   const onOperatorButtonClick = (operator: Operator) => {
     const operand = Number(display)
 
-    if (typeof pendingOperator !== 'undefined') {
+    if (typeof pendingOperator !== 'undefined' && !waitingForOperand) {
       if (!calculate(operand, pendingOperator)) {
         return
       }
