@@ -60,7 +60,7 @@ export const StyledButton = styled.button<ButtonProps>`
   border-radius: 0;
   padding-top: 1em;
   padding-bottom: 1em;
-  transition: background-color 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  transition: background-color 0.15s ease-in-out, opacity 0.15s ease-in-out;
   ${({ color }) => colorToCss(color)}
   ${({ isLarge }) => isLarge && css`
     grid-column-end: span 2;
