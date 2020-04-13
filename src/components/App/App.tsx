@@ -75,7 +75,7 @@ export const App: FunctionComponent = () => {
       newDisplay = '0'
     }
 
-    if (display.indexOf('.') === -1) {
+    if (newDisplay.indexOf('.') === -1) {
       newDisplay = newDisplay + '.'
     }
 
