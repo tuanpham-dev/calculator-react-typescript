@@ -3,29 +3,28 @@ import styled from 'styled-components'
 
 interface DisplayProps {
   hasMemory: boolean
-  operator: '+' | '-' | '×' | '÷' | ''
+  expression: string
   value: string
 }
 
 const StyledIndicatorList = styled.div`
   font-size: 0.75em;
+  line-height: 1;
   opacity: 0.4;
   text-align: right;
-`;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.25em;
+  min-height: 1em;
+`
 
-const StyledIndicatorItem = styled.span`
-  display: inline-block;
-  min-width: 1.2em;
-  text-align: right;
-
-  &:last-child {
-    margin-right: 0;
-  }
-`;
+const StyledExpression = styled.span`
+  margin-left: auto;
+`
 
 const StyleScreen = styled.div`
   font-size: 2.5em;
-  min-height: 1em;
+  min-height: 1.4em;
   display: flex;
   align-items: center;
   justify-content: flex-end;  
@@ -38,17 +37,17 @@ const StyledDisplay = styled.div`
   padding: 1.5em 1em;
 `
 
-export const Screen: FunctionComponent<DisplayProps> = ({ value, hasMemory, operator }) => {
+export const Screen: FunctionComponent<DisplayProps> = ({ value, hasMemory, expression }) => {
   return (
     <StyledDisplay>
       <StyledIndicatorList>
         {hasMemory &&
-          <StyledIndicatorItem>M</StyledIndicatorItem>
+          <span>M</span>
         }
 
-        <StyledIndicatorItem>
-          {operator}
-        </StyledIndicatorItem>
+        <StyledExpression>
+          {expression}
+        </StyledExpression>
       </StyledIndicatorList>
 
       <StyleScreen>
