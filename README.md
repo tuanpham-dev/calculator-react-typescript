@@ -1,3 +1,21 @@
+# Calculator in React and TypeScript
+A working calculator in React and TypeScript. https://tuanpham-dev.github.io/calculator-react-typescript/
+
+![calculator-react-typescript](https://raw.githubusercontent.com/tuanpham-dev/calculator-react-typescript/master/screenshot.png)
+
+## Keyboard Shortcuts
+| Shortcut          | Description   |
+|-------------------|---------------|
+| <kbd>Delete</kbd> | Clear Entry   |
+| <kbd>Esc</kbd>    | Clear All     |
+| <kbd>Enter</kbd>  | Equal         |
+| <kbd>n</kbd>      | Change Sign   |
+| <kbd>p</kbd>      | Memory Plus   |
+| <kbd>q</kbd>      | Memory Minus  |
+| <kbd>r</kbd>      | Memory Recall |
+
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
