@@ -111,7 +111,7 @@ export const App: FunctionComponent = () => {
   const onEqualButtonClick = () => {
     const operand = Number(display)
 
-    if (typeof pendingOperator !== 'undefined') {
+    if (typeof pendingOperator !== 'undefined' && !waitingForOperand) {
       if (!calculate(operand, pendingOperator)) {
         return
       }
@@ -121,7 +121,7 @@ export const App: FunctionComponent = () => {
       setDisplay(operand.toString())
     }
 
-    setResult(0)
+    setResult(operand)
     setWaitingForOperand(true)
   }
 
