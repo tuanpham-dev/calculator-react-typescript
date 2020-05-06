@@ -34,16 +34,31 @@ export const App: FunctionComponent = () => {
         break
       case '÷':
         if (rightOperand === 0) {
-          return false
+          newResult = 0
+          break
         }
-
         newResult /= rightOperand
+        break
     }
 
     setResult(newResult)
-    setDisplay(newResult.toString().toString().slice(0, 12))
-
+    
+    // Display "ERROR" when /0 
+    if (pendingOperator === "÷" && rightOperand === 0){
+      setDisplay("ERROR")
+    }
+    else{
+      setDisplay(newResult.toString().toString().slice(0, 12))
+    }
     return true
+  }
+
+  // Handling display="ERROR"
+  const convertToNumberWithCheckIfNaN = (display: string) => {
+    if (Number.isNaN(Number(display))){
+      display = "0"
+    }
+    return Number(display)
   }
 
   // Pad buttons handlers
@@ -84,7 +99,7 @@ export const App: FunctionComponent = () => {
   }
 
   const onOperatorButtonClick = (operator: Operator) => {
-    const operand = Number(display)
+    const operand = convertToNumberWithCheckIfNaN(display)
 
     if (typeof pendingOperator !== 'undefined' && !waitingForOperand) {
       if (!calculate(operand, pendingOperator)) {
@@ -99,7 +114,7 @@ export const App: FunctionComponent = () => {
   }
 
   const onChangeSignButtonClick = () => {
-    const value = Number(display)
+    const value = convertToNumberWithCheckIfNaN(display)
 
     if (value > 0) {
       setDisplay('-' + display)
@@ -109,7 +124,7 @@ export const App: FunctionComponent = () => {
   }
 
   const onEqualButtonClick = () => {
-    const operand = Number(display)
+    const operand = convertToNumberWithCheckIfNaN(display)
 
     if (typeof pendingOperator !== 'undefined' && !waitingForOperand) {
       if (!calculate(operand, pendingOperator)) {
@@ -149,12 +164,12 @@ export const App: FunctionComponent = () => {
   }
 
   const onMemoryPlusButtonClick = () => {
-    setMemory(memory + Number(display))
+    setMemory(memory + convertToNumberWithCheckIfNaN(display))
     setWaitingForOperand(true)
   }
 
   const onMemoryMinusButtonClick = () => {
-    setMemory(memory - Number(display))
+    setMemory(memory - convertToNumberWithCheckIfNaN(display))
     setWaitingForOperand(true)
   }
 
